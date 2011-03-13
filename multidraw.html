@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>multidraw canvas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <link rel="stylesheet" type="text/css" href="multidraw_style_opera.css" />
+
+  </head>
+
+  <body>
+
+      <div id="whole">
+
+        <div id="black">
+        </div>
+
+        <div id="container">
+          <div id="top">
+            <h1>Multidraw&nbsp;&nbsp;&nbsp;Canvas</h1>
+          </div>
+          <div id="cnvs">
+            <iframe id="cnvsinlineframe" src="multidraw_canvas.html" width="806px" height="609px" scrolling="no"><p>Your browser does not support the iframe element.</p></iframe>
+          </div>
+          <div id="text">
+            <p>Welcome to my Multidraw Canvas. This is my very first project created utilising both PHP+AJAX and HTML5 canvas.</p>
+            <p>This small application picks up end points of line segments being drawn and stores them in a so-called swap file on remote server. Regular-timed update fetches the data from the server and draws given lines. The swap file is only one on the server, therefore there is only one instance of the Multidraw Canvas running. That means everybody around the globe is drawing in the very same canvas!</p>
+            <p>controls:<br />- click to choose points in the canvas for lines to be drawn<br />- move cursor out of the canvas to break the line<br />- double click to wipe the canvas (for everyone!)</p>
+          </div>
+          <div id="bottom">
+            <p>© 2011 &nbsp;&nbsp; by ojaaaa &nbsp;&nbsp;&nbsp;
+              <a href="http://validator.w3.org/check?uri=referer" target="_blank"><img src="http://www.w3.org/Icons/valid-xhtml10-blue" title="validate XHTML" height="21" width="62" alt="XHTML validation" /></a>&nbsp;&nbsp;&nbsp;
+              <a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank"> <img style="border:0;width:62px;height:21px" src="http://www.w3.org/Icons/valid-css-blue" title="validate css" alt="CSS validation" /></a>
+                            </p>
+            <hr />
+          </div>
+        </div>
+
+      </div>
+
+    <script type="text/javascript">
+      document.getElementById("black").style.opacity=0.7; /* a little trick: opacity is not a css standard */
+    </script>
+  </body>
+</html>

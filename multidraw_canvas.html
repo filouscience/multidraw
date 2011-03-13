@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>canvas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+
+    <script type="text/javascript" src="multidraw_canvas.js">
+
+    </script>
+
+    <style type="text/css">
+      #drawCanvas { border: 1px solid #c3c3c3; background-color: #ffffff; cursor: crosshair; opacity: 0.85; position: absolute; top: 0px; left: 0px; }
+    </style>
+
+  </head>
+
+  <body>
+    <div>
+      <canvas id="drawCanvas" width="799" height="599" onmouseout="cnvs_penup()" onclick="cnvs_click(event)" ondblclick="cnvs_reset()" onmouseover="cnvs_fetch()" >
+        Your browser does not support the canvas element.
+      </canvas>
+
+    </div>
+
+<p id="debug_out"></p>
+
+    <script type="text/javascript">                                                                    // initialization
+      cnvs_penup();
+      cnvs_fetch();
+    </script>
+
+  </body>
+</html>
