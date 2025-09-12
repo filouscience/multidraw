@@ -1,7 +1,7 @@
 import * as trystero from "https://esm.run/trystero"
 
 const my_canvas = document.getElementById("my_canvas");
-const output = document.getElementById("output");
+//const output = document.getElementById("output");
 
 class MultidrawHistory
 {
@@ -13,7 +13,7 @@ class MultidrawHistory
     
     clear()
     {
-        this.stamp = Date.now();
+        //this.stamp = Date.now();
         this.data.length = 0; // empty the array
     }
     
@@ -29,23 +29,36 @@ let x0 = 0;
 let y0 = 0;
 let pen_down = false;
 
-const config = {appId: "multidraw_app"};
+const config = {
+    appId: "multidraw_app"
+};
 const room = trystero.joinRoom(config, "my_room_id");
 
-room.onPeerJoin( (peerId) => output.innerHTML = peerId+" joined." );
-room.onPeerLeave( (peerId) => output.innerHTML = peerId+" left." );
+room.onPeerJoin( (peerId) => peer_join(peerId) );
+room.onPeerLeave( (peerId) => peer_leave(peerId) );
+
+function peer_join(peerId)
+{
+    sendStamp(h.stamp, peerId);
+    console.log(peerId+" joined.");
+}
+
+function peer_leave(peerId)
+{
+    console.log(peerId+" left.");
+}
 
 //sendAction: a function that broadcasts an "action"
 //getAction: a function that creates a listener to "action"
-const [sendLine, getLine] = room.makeAction("line");
+const [sendLine,  getLine]  = room.makeAction("line");
 const [sendErase, getErase] = room.makeAction("erase");
+const [sendStamp, getStamp] = room.makeAction("stamp");
+const [sendHistQ, getHistQ] = room.makeAction("histq");
 
 getLine(
     (data,peerId) => {
         draw_line(data);
         h.push(data);
-        //console.log("get line  from "+data.x0+","+data.y0+" to "+data.x+","+data.y);
-        //console.log("number of segments: "+h.data.length);
     }
 );
 
@@ -54,7 +67,26 @@ getErase(
         const ctx = my_canvas.getContext("2d");
         ctx.clearRect(0, 0, my_canvas.width, my_canvas.height);
         h.clear();
-        console.log("get erase");
+    }
+);
+
+getStamp(
+    (data,peerId) => {
+        if (data < h.stamp) // peer knows more history than we do
+        {
+            h.stamp = data;
+            sendHistQ( {}, peerId ); // request peer's history
+        }
+    }
+);
+
+getHistQ(
+    (data,peerId) => {
+        // send history data line by line
+        for (let i = 0; i < h.data.length; i++)
+        {
+            sendLine( h.data[i] , peerId);
+        }
     }
 );
 
