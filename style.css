@@ -1,0 +1,9 @@
+#my_canvas {
+  border : 1px solid #c3c3c3;
+  background-color : #ffffff;
+  cursor : crosshair;
+  opacity : 0.85;
+  position : relative;
+  top : 0px;
+  left : 0px;
+}
