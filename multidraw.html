@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>multidraw</title>
@@ -5,10 +6,24 @@
   <script type="module" src="main.js"></script>
 </head>
 <body>
-  <div id="canvas_container">
-    <canvas id="my_canvas" width="400" height="400">canvas error</canvas>
+  <div class="all-box">
+    <div class="dark-box">
+    </div>
+    <div class="top-box">
+      <h1>multidraw</h1>
+    </div>
+    <div class="center-box">
+      <div class="canvas-container">
+        <canvas id="my_canvas" width="900" height="600">canvas error</canvas>
+      </div>
+      <div class="control-panel">
+        <p>control panel</p>
+        <button id="erase_btn">erase</button>
+      </div>
+    </div>
+    <div class="bot-box">
+      <p>&#xA9; 2025 multidraw canvas v2</p>
+    </div>
   </div>
-  <button id="erase_btn">erase</button>
-  <p id="output"></p>
 </body>
 </html>
