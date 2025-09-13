@@ -1,7 +1,6 @@
 import * as trystero from "https://esm.run/trystero"
 
 const my_canvas = document.getElementById("my_canvas");
-//const output = document.getElementById("output");
 
 class MultidrawHistory
 {
@@ -64,9 +63,7 @@ getLine(
 
 getErase(
     (data,peerId) => {
-        const ctx = my_canvas.getContext("2d");
-        ctx.clearRect(0, 0, my_canvas.width, my_canvas.height);
-        h.clear();
+        cnvs_erase();
     }
 );
 
@@ -127,11 +124,16 @@ function cnvs_erase()
 {
     const ctx = my_canvas.getContext("2d");
     ctx.clearRect(0, 0, my_canvas.width, my_canvas.height);
-    sendErase( {} ); // broadcast erase
     h.clear();
+}
+
+function erase_click()
+{
+    cnvs_erase();
+    sendErase( {} ); // broadcast erase
 }
 
 
 my_canvas.addEventListener("click", (e) => { cnvs_click(e) } );
 my_canvas.addEventListener("mouseleave", () => { cnvs_penup() } );
-document.getElementById("erase_btn").addEventListener("click", () => { cnvs_erase() } );
+document.getElementById("erase_btn").addEventListener("click", () => { erase_click(); } );
