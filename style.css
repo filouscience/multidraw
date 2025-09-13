@@ -1,0 +1,67 @@
+body {
+    background : url("img/chequer.png") repeat;
+    background-color : #d0d0d0;
+}
+
+h1 {
+    color : #ffffff;
+}
+
+.all-box {
+    width : 1200px;
+    margin-left : auto;
+    margin-right : auto;
+    color : #808080;
+}
+
+.dark-box {
+    top : 0px;
+    height : 100%;
+    width : 1200px;
+    z-index : -1;
+    position : fixed;
+    background : #000000;
+    opacity : 0.9;
+}
+
+.top-box {
+    width : 1200px;
+    height : 100px;
+    padding-top : 20px;
+    text-align : center;
+}
+
+.center-box {
+    width : 1200px;
+    height : 600px;
+}
+
+.canvas-container {
+    width : 900px;
+    margin-left : 50px;
+    float : left;
+}
+
+.control-panel {
+    width : 150px;
+    height : 500px;
+    margin : 50px;
+    float : left;
+    opacity : 1;
+    background : #eeeeee;
+    text-align : center;
+}
+
+.bot-box {
+    width : 1200px;
+    padding-top : 120px;
+    text-align : center;
+}
+
+#my_canvas {
+  border : 1px solid #c3c3c3;
+  background-color : #ffffff;
+  cursor : crosshair;
+  opacity : 0.7;
+}
+
