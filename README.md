@@ -1,10 +1,22 @@
 # multidraw canvas
 
+Users draw lines in a real-time shared canvas.
+
 ## v2 (WebRTC-based)
 
-In development...
+September 2025
 
-For the signalling process, the use of [Trystero](https://github.com/dmotz/trystero) library is planned.
+Compared to **v1**, there is no server that stores the contents of the shared canvas in **v2**.
+The sharing happens through direct peer-to-peer channels.
+There still is only one "room", so everyone shares the same canvas. (The API allows for multiple rooms, though.)
+Due to the absence of the server, the shared contents are lost when the room becomes empty, unlike in **v1**.
+
+A "serverless" WebRTC signalling process (and a concise API) is provided by [Trystero](https://github.com/dmotz/trystero) library.
+
+controls:
+- click to choose end points for lines to be drawn in the canvas
+- move cursor out of the canvas to break the line
+- click "erase" button to wipe the canvas (for everyone!)
 
 ## v1 (PHP server-based)
 
